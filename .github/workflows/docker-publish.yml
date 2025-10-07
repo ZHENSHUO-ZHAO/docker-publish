@@ -95,3 +95,14 @@ jobs:
         # This step uses the identity token to provision an ephemeral certificate
         # against the sigstore community Fulcio instance.
         run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          if docker run ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest | grep -q "container";
+          then echo "Test Passed"
+          else
+            echo "Test Failed"
+            exit 1
+          fi
+   
