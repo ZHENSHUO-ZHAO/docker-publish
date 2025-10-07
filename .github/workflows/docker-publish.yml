@@ -99,7 +99,7 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     steps:
-      - run: docker run ${{ env.REGISTRY }}/$(echo "${{ env.IMAGE_NAME }}" | tr '[:upper:]' '[:lower:]'):latest | grep "conta1iner" && echo "Test Passed"
+      - run: docker run ${{ env.REGISTRY }}/$(echo "${{ env.IMAGE_NAME }}" | tr '[:upper:]' '[:lower:]'):latest | grep "container" && echo "Test Passed"
           # IMAGE_NAME_LOWER=$(echo "${{ env.IMAGE_NAME }}" | tr '[:upper:]' '[:lower:]')
           # if docker run ${{ env.REGISTRY }}/${IMAGE_NAME_LOWER}:latest | grep -q "container";
           # then echo "Test Passed"
